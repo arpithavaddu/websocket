@@ -1,0 +1,9 @@
+/.classpath
+*.iml
+/.settings
+/.idea
+.DS_Store
+classes/
+/.project
+build/
+logs/
