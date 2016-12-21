@@ -1,5 +1,6 @@
 package com.activemq.topic;
 
+import com.activemq.websocket.handlers.Publisher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.activemq.topic;
+package com.activemq.websocket.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -22,6 +22,6 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // use the /names endpoint (prefixed with /app as configured above) for incoming requests
-        registry.addEndpoint("/names").withSockJS();
+        registry.addEndpoint("/message-names").withSockJS();
     }
 }

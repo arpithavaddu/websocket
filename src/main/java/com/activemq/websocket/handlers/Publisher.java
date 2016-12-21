@@ -1,4 +1,4 @@
-package com.activemq.topic;
+package com.activemq.websocket.handlers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;

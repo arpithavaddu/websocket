@@ -7,3 +7,5 @@ classes/
 /.project
 build/
 logs/
+.gradle/
+target/

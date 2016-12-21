@@ -1,6 +1,7 @@
-package com.activemq.topic;
+package com.activemq.websocket.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.camel.component.jms.JmsComponent;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,14 +20,14 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class ActiveMqConfig {
 
-    @Value("${topic.name}")
-    private String topic;
+    @Value("${queue.name}")
+    private String queueName;
 
 
     @Bean
-    public ActiveMQTopic activeMQTopic()
+    public ActiveMQQueue activeMQQueue()
     {
-        return new ActiveMQTopic(topic);
+        return new ActiveMQQueue(queueName);
     }
 
     @Bean
@@ -34,8 +35,8 @@ public class ActiveMqConfig {
     {
        JmsTemplate jmsTemplate = new JmsTemplate();
         jmsTemplate.setConnectionFactory(connectionFactory);
-        jmsTemplate.setDefaultDestination(activeMQTopic());
-        jmsTemplate.setPubSubDomain(true);
+        jmsTemplate.setDefaultDestination(activeMQQueue());
+        jmsTemplate.setPubSubDomain(false);
         return jmsTemplate;
     }
 
@@ -52,20 +53,4 @@ public class ActiveMqConfig {
         jmsComponent.setMaxConcurrentConsumers(2);
         return jmsComponent;
     }
-
-//    @Bean
-//    public Subscriber subscriber()
-//    {
-//        return new Subscriber();
-//    }
-//    @Bean
-//    public DefaultMessageListenerContainer defaultMessageListenerContainer(final ConnectionFactory connectionFactory)
-//    {
-//        DefaultMessageListenerContainer defaultMessageListenerContainer= new DefaultMessageListenerContainer();
-//        defaultMessageListenerContainer.setConnectionFactory(connectionFactory);
-//        defaultMessageListenerContainer.setPubSubDomain(true);
-//        defaultMessageListenerContainer.setDestinationName(topic);
-//        defaultMessageListenerContainer.setMessageListener(subscriber());
-//        return defaultMessageListenerContainer;
-//    }
 }

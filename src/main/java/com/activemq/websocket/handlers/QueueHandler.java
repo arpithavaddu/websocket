@@ -1,4 +1,4 @@
-package com.activemq.topic;
+package com.activemq.websocket.handlers;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
